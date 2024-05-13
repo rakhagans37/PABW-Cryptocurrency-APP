@@ -14,17 +14,22 @@
 <script>
     async function getAllData() {
         const url =
-            "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+            "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
 
         const header = {
             Accept: "application/json",
-            "X_CMC-PRO-API-KEY": "0ad0fd50-4b81-4477-8bd2-2428072a6f2a",
-        };
+            'X-CMC_PRO_API_KEY': '0ad0fd50-4b81-4477-8bd2-2428072a6f2a',
+        }
+
+        const queryParameter = new URLSearchParams({
+            limit: 10,
+            conver: "IDR"
+        })
 
         let data = await fetch(url, {
             method: "GET",
             headers: header
-        });
+        })
         data = await data.json();
         return data;
     }
