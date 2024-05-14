@@ -1380,11 +1380,6 @@ video {
   gap: 1.25rem;
 }
 
-.gap-x-5 {
-  -moz-column-gap: 1.25rem;
-       column-gap: 1.25rem;
-}
-
 .gap-y-5 {
   row-gap: 1.25rem;
 }
@@ -1705,10 +1700,6 @@ video {
   border-radius: 0.25rem;
 }
 
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
 .rounded-b {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -1953,13 +1944,13 @@ video {
      object-fit: scale-down;
 }
 
-.px-\[85px\] {
-  padding-left: 85px;
-  padding-right: 85px;
+.px-\[20px\] {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.pt-\[85px\] {
-  padding-top: 85px;
+.pt-\[20px\] {
+  padding-top: 20px;
 }
 
 .text-left {

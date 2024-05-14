@@ -7,8 +7,8 @@
     <link href="./src/output.css" rel="stylesheet" />
 </head>
 
-<body class="bg-background w-screen">
-    <div class="w-screen pt-[85px] px-[85px] flex flex-col gap-14">
+<body class="bg-background container">
+    <div class="pt-[20px] px-[20px] flex flex-col gap-14">
         <div class="flex flex-row gap-2 items-center">
             <img src="./src/img/logo.png" class="w-16 h-16">
             <h1 class="text-white font-bold text-3xl">crypo</h1>
@@ -52,11 +52,17 @@
                 </script>
             </div>
             <!-- TradingView Widget END -->
+
+            <p id="test"></p>
         </div>
     </div>
 </body>
 
-<script>
+<script type="module">
+    import {
+        getListLatestCoin
+    } from "./models/api.js";
+
     // Function to update date and time
     setInterval(() => {
         const date = new Date();
@@ -72,50 +78,21 @@
         document.getElementById("datetime").innerHTML = date.toLocaleDateString("id-ID", options);
     }, 1000);
 
-    /* 
-     *Function to get all data from API
-     *Uncomment this code below
-     */
-
-    /* async function getAllData() {
-        let url =
-            "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
-
-        const header = {
-            Accept: "application/json",
-            'X-CMC_PRO_API_KEY': '0ad0fd50-4b81-4477-8bd2-2428072a6f2a',
-        }
-
-        const queryParameter = new URLSearchParams({
-            limit: 10,
-            conver: "IDR"
-        })
-
-        url = `${url}?${queryParameter.toString()}`
-
-        let data = await fetch(url, {
-            method: "GET",
-            headers: header
-        })
-        data = await data.json();
-        return data;
-    } */
-
     /* Display the data
-     * GET data using getAllData function
+     * GET data using getListLatestCoin function
      * Display the data to the container using DOM
      * Uncomment this code below
      */
 
-    /*getAllData().then((data) => {
+    getListLatestCoin({
+        limit: 10
+    }).then((data) => {
         console.log(data);
 
         for (let index = 0; index < data.length; index++) {
-            const p = document.createElement("p");
-            p.innerHTML = data.data[index].name;
-            document.getElementById("container").appendChild(p);
+            document.getElementById("test").innerHTML += data.data[index].name + "<br>";
         }
-    });*/
+    });
 </script>
 
 </html>
