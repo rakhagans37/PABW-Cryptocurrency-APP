@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>Crypo - Pantauan Crypto</title>
     <meta charset="UTF-8" / <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./src/output.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
@@ -9,6 +10,7 @@
 </head>
 
 <body class="bg-background w-screen font-sans">
+    <!-- Container -->
     <div class="w-full pt-[85px] px-[85px] flex flex-col gap-14">
         <!-- Header -->
         <div class="flex flex-row gap-2 items-center">
@@ -24,9 +26,6 @@
             <!-- TradingView Widget NEWS -->
             <div class="md:col-span-1">
                 <div class="tradingview-widget-container__widget"></div>
-                <div class="tradingview-widget-copyright">
-                    <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a>
-                </div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
                     {
                         "feedMode": "market",
@@ -64,8 +63,10 @@
         <!-- Widget END -->
 
         <!-- Table -->
-        <div class="relative overflow-hidden shadow-md">
+        <div class="relative shadow-md overflow-x-scroll">
+            <!-- Table Header -->
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+                <!-- Search Start-->
                 <label for="table-search" class="sr-only">Search</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
@@ -75,12 +76,23 @@
                     </div>
                     <input type="text" id="table-search" class="block p-2 ps-10 text-sm border rounded-lg w-80 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Search for items">
                 </div>
+                <!-- Search End -->
+
+                <!-- Loading -->
+                <div id="loading" role="status" style="display: none;">
+                    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                    </svg>
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <!-- Loading End -->
+
+                <!-- DropDown Start -->
                 <div>
+                    <label for="dropdownRadio" class="text-white font-bold mr-2">Tampilkan Koin:</label>
                     <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center  border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-3 py-1.5 bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700" type="button">
-                        <svg class="w-3 h-3  text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z" />
-                        </svg>
-                        Last 30 days
+                        10
                         <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
@@ -90,38 +102,34 @@
                         <ul class="p-3 space-y-1 text-smtext-gray-200" aria-labelledby="dropdownRadioButton">
                             <li>
                                 <div class="flex items-center p-2 rounded hover:bg-gray-600">
-                                    <input id="filter-radio-example-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
-                                    <label for="filter-radio-example-1" class="w-full ms-2 text-sm font-medium rounded text-gray-300">Last day</label>
+                                    <input id="filter-radio-example-1" type="radio" value="5" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+                                    <label for="filter-radio-example-1" class="w-full ms-2 text-sm font-medium rounded text-gray-300">5</label>
                                 </div>
                             </li>
                             <li>
                                 <div class="flex items-center p-2 rounded hover:bg-gray-600">
-                                    <input checked="" id="filter-radio-example-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
-                                    <label for="filter-radio-example-2" class="w-full ms-2 text-sm font-medium rounded text-gray-300">Last 7 days</label>
+                                    <input checked="" id="filter-radio-example-2" type="radio" value="10" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+                                    <label for="filter-radio-example-2" class="w-full ms-2 text-sm font-medium rounded text-gray-300">10</label>
                                 </div>
                             </li>
                             <li>
                                 <div class="flex items-center p-2 rounded hover:bg-gray-600">
-                                    <input id="filter-radio-example-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
-                                    <label for="filter-radio-example-3" class="w-full ms-2 text-sm font-medium rounded text-gray-300">Last 30 days</label>
+                                    <input id="filter-radio-example-3" type="radio" value="50" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+                                    <label for="filter-radio-example-3" class="w-full ms-2 text-sm font-medium rounded text-gray-300">50</label>
                                 </div>
                             </li>
                             <li>
                                 <div class="flex items-center p-2 rounded hover:bg-gray-600">
-                                    <input id="filter-radio-example-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
-                                    <label for="filter-radio-example-4" class="w-full ms-2 text-sm font-medium rounded text-gray-300">Last month</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-600">
-                                    <input id="filter-radio-example-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
-                                    <label for="filter-radio-example-5" class="w-full ms-2 text-sm font-medium rounded text-gray-300">Last year</label>
+                                    <input id="filter-radio-example-4" type="radio" value="100" name="filter-radio" class="w-4 h-4 text-blue-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+                                    <label for="filter-radio-example-4" class="w-full ms-2 text-sm font-medium rounded text-gray-300">100</label>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                </div>
-            </div>
+                </div> <!-- DropDown End -->
+            </div> <!-- Table Header End -->
+
+            <!-- Data Table Start -->
             <table class="w-full text-sm text-left rtl:text-right text-gray-400">
                 <thead class="text-sm font-extrabold bg-gray-700 text-white font-sora">
                     <tr>
@@ -150,7 +158,7 @@
                             Market cap
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Circulating Supply
+                            Volume
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Latest7d
@@ -161,8 +169,47 @@
 
                 </tbody>
             </table>
+            <!-- Data Table End -->
         </div>
-    </div>
+        <!-- Table End -->
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example" class="w-3/5 self-center mb-10">
+            <ul class="grid grid-cols-7 items-center -space-x-px h-16 text-base">
+                <li>
+                    <a href="#" class="flex items-center justify-center px-4 h-16 ms-0 leading-tight border border-e-0 rounded-s-lg bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">
+                        <span class="sr-only">Previous</span>
+                        <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center justify-center px-4 h-16 leading-tight border bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">1</a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center justify-center px-4 h-16 leading-tight border bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">2</a>
+                </li>
+                <li>
+                    <a href="#" aria-current="page" class="z-10 flex items-center justify-center px-4 h-16 leading-tight  border hover:bg-blue-100 hover:text-blue-700 border-gray-700 bg-gray-700 text-white">3</a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center justify-center px-4 h-16 leading-tight border bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">4</a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center justify-center px-4 h-16 leading-tight border bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">5</a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center justify-center px-4 h-16 leading-tight border rounded-e-lg  bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white">
+                        <span class="sr-only">Next</span>
+                        <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav> <!-- Pagination End -->
+    </div> <!-- Container End -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 
@@ -183,135 +230,94 @@
             minute: "numeric",
             second: "numeric",
         };
-        document.getElementById("datetime").innerHTML =
-            date.toLocaleDateString("id-ID", options);
+        document.getElementById("datetime").innerHTML = date.toLocaleDateString("id-ID", options);
     }, 1000);
 
-    /* Display the data
-     * GET data using getListLatestCoin function
-     * Display the data to the container using DOM
-     * Uncomment this code below
-     */
-
-    getListLatestCoin({
-        "convert": "IDR"
-    }).then((data) => {
-        var dataJSON = {
-            "data": data
-        };
-        var data = dataJSON.data;
-
-        console.log(dataJSON.data);
-
-        for (let index = 0; index < data.data.length; index++) {
-            var checkbox = document.createElement("input");
+    // Function to display data to the table
+    function displayTable(data, limit) {
+        for (let index = 0; index < 100; index++) {
+            const checkbox = document.createElement("input");
             checkbox.id = "checkbox-table-search-1";
             checkbox.type = "checkbox";
             checkbox.className = "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600";
 
-            var label = document.createElement("label");
+            const label = document.createElement("label");
             label.htmlFor = "checkbox-table-search-1";
             label.className = "sr-only";
             label.textContent = "checkbox";
 
-            var div = document.createElement("div");
+            const div = document.createElement("div");
             div.className = "flex items-center";
             div.appendChild(checkbox);
             div.appendChild(label);
 
-            var td = document.createElement("td");
+            const td = document.createElement("td");
             td.className = "w-4 p-4";
             td.appendChild(div);
 
-            var th = document.createElement("th");
+            const th = document.createElement("th");
             th.scope = "row";
             th.className = "px-6 py-4";
             th.textContent = data.data[index].name;
 
-            var td1 = document.createElement("td");
+            const td1 = document.createElement("td");
             td1.className = "px-6 py-4";
-            td1.textContent = "Rp." + parseFloat(data.data[index].quote.IDR.price).toLocaleString('id-ID');
+            td1.textContent = "Rp." + parseFloat(data.data[index].quote.IDR.price).toLocaleString("id-ID");
 
-            var td2 = document.createElement("td");
-            if (parseFloat(data.data[index].quote.IDR.percent_change_1h) > 0.0) {
-                td2.className = "px-6 py-4 text-green-800";
-            } else {
-                td2.className = "px-6 py-4 text-red-800"
-            };
-            td2.textContent = data.data[index].quote.IDR.percent_change_1h + '%';
+            const td2 = document.createElement("td");
+            td2.className = parseFloat(data.data[index].quote.IDR.percent_change_1h) > 0.0 ? "px-6 py-4 text-green-800" : "px-6 py-4 text-red-800";
+            td2.textContent = data.data[index].quote.IDR.percent_change_1h + "%";
 
-            var td3 = document.createElement("td");
-            td3.className = "px-6 py-4";
-            td3.textContent = data.data[index].quote.IDR.percent_change_24h + '%';
+            const td3 = document.createElement("td");
+            td3.className = parseFloat(data.data[index].quote.IDR.percent_change_24h) > 0.0 ? "px-6 py-4 text-green-800" : "px-6 py-4 text-red-800";
+            td3.textContent = data.data[index].quote.IDR.percent_change_24h + "%";
 
-            var td4 = document.createElement("td");
-            td4.className = "px-6 py-4";
-            td4.textContent = data.data[index].quote.IDR.percent_change_7d + '%';
+            const td4 = document.createElement("td");
+            td4.className = parseFloat(data.data[index].quote.IDR.percent_change_7d) > 0.0 ? "px-6 py-4 text-green-800" : "px-6 py-4 text-red-800";
+            td4.textContent = data.data[index].quote.IDR.percent_change_7d + "%";
 
-            var td5 = document.createElement("td");
+            const td5 = document.createElement("td");
             td5.className = "px-6 py-4";
-            td5.textContent = "Rp." + parseFloat(data.data[index].quote.IDR.market_cap).toLocaleString('id-ID');
+            td5.textContent = "Rp." + parseFloat(data.data[index].quote.IDR.market_cap).toLocaleString("id-ID");
 
-            var td6 = document.createElement("td");
-            td6.className = "px-6 py-4";
-            td6.textContent = data.data[index].circulating_supply;
+            const td6 = document.createElement("td");
+            td6.className = "px-6 py-4 text-sm";
+            td6.textContent = data.data[index].quote.IDR.volume_24h + " " + data.data[index].quote.IDR.volume_change_24h + " " + data.data[index].symbol;
 
-            var td7 = document.createElement("td");
+            const td7 = document.createElement("td");
             td7.className = "px-6 py-4";
-
-            var td7 = document.createElement("td");
-            td7.className = "px-6 py-4";
-
-            // var tradingviewContainer = document.createElement("div");
-            // tradingviewContainer.className = "tradingview-widget-container";
-            // tradingviewContainer.style.height = "100%";
-            // tradingviewContainer.style.width = "100%";
-
-            // var tradingviewWidget = document.createElement("div");
-            // tradingviewWidget.className = "tradingview-widget-container__widget";
-            // tradingviewWidget.style.height = "calc(100% - 32px)";
-            // tradingviewWidget.style.width = "100%";
-
-            // var tradingviewCopyright = document.createElement("div");
-            // var tradingviewLink = document.createElement("a");
-            // tradingviewLink.href = "https://www.tradingview.com/";
-            // tradingviewLink.rel = "noopener nofollow";
-            // tradingviewLink.target = "_blank";
-            // var tradingviewSpan = document.createElement("span");
-            // tradingviewSpan.className = "blue-text";
-            // tradingviewSpan.textContent = "Track all markets on TradingView";
-            // tradingviewLink.appendChild(tradingviewSpan);
-            // tradingviewCopyright.appendChild(tradingviewLink);
-
-            // var tradingviewScript = document.createElement("script");
-            // tradingviewScript.type = "text/javascript";
-            // tradingviewScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-            // tradingviewScript.async = true;
-            // tradingviewScript.innerHTML = `{
-            //         "autosize": true,
-            //         "symbol": "CRYPTOCAP:${data.data[index].symbol}",
-            //         "interval": "D",
-            //         "timezone": "Etc/UTC",
-            //         "theme": "dark",
-            //         "style": "2",
-            //         "locale": "en",
-            //         "hide_top_toolbar": true,
-            //         "hide_legend": true,
-            //         "allow_symbol_change": false,
-            //         "save_image": false,
-            //         "calendar": false,
-            //         "hide_volume": true,
-            //         "support_host": "https://www.tradingview.com"
-            //     }`;
-
-            // td7.appendChild(tradingviewContainer);
-            // tradingviewContainer.appendChild(tradingviewWidget);
-            // tradingviewContainer.appendChild(tradingviewCopyright);
-            // tradingviewContainer.appendChild(tradingviewScript);
+            if (index < limit) {
+                const divTradingView = document.createElement("div");
+                divTradingView.className = "tradingview-widget-container";
+                const divWidget = document.createElement("div");
+                divWidget.className = "tradingview-widget-container__widget";
+                divTradingView.appendChild(divWidget);
+                const script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
+                script.async = true;
+                script.textContent = `{
+                "symbol": "CRYPTOCAP:${data.data[index].symbol}",
+                "width": "250",
+                "height": "100",
+                "locale": "en",
+                "dateRange": "1M",
+                "colorTheme": "dark",
+                "isTransparent": false,
+                "autosize": false,
+                "largeChartUrl": "",
+                "chartOnly": true
+            }`;
+                divTradingView.appendChild(script);
+                td7.appendChild(divTradingView);
+            }
 
 
-            var tr = document.createElement("tr");
+            const tr = document.createElement("tr");
             tr.className = "border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
+            if (index >= limit) {
+                tr.style.display = "none";
+            }
             tr.appendChild(td);
             tr.appendChild(th);
             tr.appendChild(td1);
@@ -322,11 +328,57 @@
             tr.appendChild(td6);
             tr.appendChild(td7);
 
-            var table = document.getElementById("allDataTable");
+            const table = document.getElementById("allDataTable");
             table.appendChild(tr);
-
         }
-    })
+    }
+
+    // Function to search data in the table
+    document.getElementById('table-search').addEventListener('input', function() {
+        const filter = this.value.toLowerCase();
+        const rows = document.querySelectorAll('tbody tr');
+        let limit = document.querySelector('input[name="filter-radio"]:checked').value;
+        let index = 0;
+
+        rows.forEach(function(row) {
+            const cells = row.querySelectorAll('td, th');
+            const match = Array.from(cells).some(function(cell) {
+                if (filter == '' && index < limit) {
+                    return true;
+                } else if (filter == '' && index >= limit) {
+                    return false;
+                }
+                return cell.textContent.toLowerCase().includes(filter);
+            });
+
+            row.style.display = match ? '' : 'none';
+            index++;
+        });
+    });
+
+    // Function to filter data in the table based on the limit
+    document.getElementById("dropdownRadio").addEventListener("change", function() {
+        document.getElementById("loading").style.display = "block";
+        const limit = document.querySelector('input[name="filter-radio"]:checked').value;
+        getListLatestCoin({
+            "convert": "IDR",
+        }).then((newData) => {
+            const tableBody = document.getElementById("allDataTable");
+            tableBody.innerHTML = "";
+
+            displayTable(newData, limit);
+            document.getElementById("loading").style.display = "none";
+        });
+
+    });
+
+    getListLatestCoin({
+        "convert": "IDR",
+    }).then((response) => {
+        console.log(response);
+
+        displayTable(response, 10);
+    });
 </script>
 
 </html>

@@ -3,6 +3,7 @@
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.0.18"
+    "@fontsource/inter": "^5.0.18",
+    "flowbite": "^2.3.0"
   }
 }
