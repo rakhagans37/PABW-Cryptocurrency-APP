@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.0.18",
+    "caniuse-lite": "^1.0.30001621",
     "flowbite": "^2.3.0"
   }
 }
