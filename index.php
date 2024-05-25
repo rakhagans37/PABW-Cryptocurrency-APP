@@ -22,9 +22,9 @@
         <p class="text-white text-4xl font-extrabold" id="datetime"></p>
 
         <!-- Widget -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 gap-y-5">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 gap-y-5">
             <!-- TradingView Widget NEWS -->
-            <div class="md:col-span-1">
+            <div class="lg:col-span-1">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
                     {
@@ -41,7 +41,7 @@
             <!-- TradingView Widget END -->
 
             <!-- TradingView Widget CHART -->
-            <div class="md:col-span-2">
+            <div class="lg:col-span-2">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
                     {
@@ -74,7 +74,7 @@
                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <input type="text" id="table-search" class="block p-2 ps-10 text-sm border rounded-lg w-80 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Search for items">
+                    <input type="text" id="table-search" class="block p-2 ps-10 text-sm border rounded-lg w-80 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Cari koin">
                 </div>
                 <!-- Search End -->
 
@@ -265,15 +265,15 @@
             td1.textContent = "Rp." + parseFloat(data.data[index].quote.IDR.price).toLocaleString("id-ID");
 
             const td2 = document.createElement("td");
-            td2.className = parseFloat(data.data[index].quote.IDR.percent_change_1h) > 0.0 ? "px-6 py-4 text-green-800" : "px-6 py-4 text-red-800";
+            td2.className = parseFloat(data.data[index].quote.IDR.percent_change_1h) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
             td2.textContent = data.data[index].quote.IDR.percent_change_1h + "%";
 
             const td3 = document.createElement("td");
-            td3.className = parseFloat(data.data[index].quote.IDR.percent_change_24h) > 0.0 ? "px-6 py-4 text-green-800" : "px-6 py-4 text-red-800";
+            td3.className = parseFloat(data.data[index].quote.IDR.percent_change_24h) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
             td3.textContent = data.data[index].quote.IDR.percent_change_24h + "%";
 
             const td4 = document.createElement("td");
-            td4.className = parseFloat(data.data[index].quote.IDR.percent_change_7d) > 0.0 ? "px-6 py-4 text-green-800" : "px-6 py-4 text-red-800";
+            td4.className = parseFloat(data.data[index].quote.IDR.percent_change_7d) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
             td4.textContent = data.data[index].quote.IDR.percent_change_7d + "%";
 
             const td5 = document.createElement("td");
@@ -306,7 +306,8 @@
                 "isTransparent": false,
                 "autosize": false,
                 "largeChartUrl": "",
-                "chartOnly": true
+                "chartOnly": true,
+                "noTimeScale": true
             }`;
                 divTradingView.appendChild(script);
                 td7.appendChild(divTradingView);
@@ -314,6 +315,9 @@
 
 
             const tr = document.createElement("tr");
+            tr.onclick = function() {
+                changePage(data.data[index].symbol);
+            };
             tr.className = "border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
             if (index >= limit) {
                 tr.style.display = "none";
@@ -375,10 +379,19 @@
     getListLatestCoin({
         "convert": "IDR",
     }).then((response) => {
+        document.getElementById("loading").style.display = "block";
         console.log(response);
 
         displayTable(response, 10);
+        document.getElementById("loading").style.display = "none";
     });
+
+    function changePage(symbol) {
+        const param = new URLSearchParams({
+            "symbol": symbol
+        });
+        window.location.href = "detailKoin.php?" + param.toString();
+    }
 </script>
 
 </html>
