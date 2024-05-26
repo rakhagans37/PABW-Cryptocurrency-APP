@@ -13,10 +13,10 @@
     <!-- Container -->
     <div class="w-full pt-[85px] px-[85px] flex flex-col gap-14">
         <!-- Header -->
-        <div class="flex flex-row gap-2 items-center">
+        <a class="flex flex-row gap-2 items-center" href="index.php">
             <img src="./src/img/logo.png" class="w-16 h-16" />
             <h1 class="text-white font-bold text-3xl">crypo</h1>
-        </div>
+        </a>
 
         <!-- Date and Time -->
         <p class="text-white text-4xl font-extrabold" id="datetime"></p>
