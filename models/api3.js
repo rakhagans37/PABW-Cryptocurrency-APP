@@ -1,6 +1,6 @@
 export async function getLatestQuote(parameter = null) {
     let url =
-        "https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest";
+        "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest";
 
     const header = {
         Accept: "application/json",

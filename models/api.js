@@ -6,7 +6,7 @@
 
 export async function getListLatestCoin(parameter = null) {
     let url =
-        "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+        "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
 
     const header = {
         Accept: "application/json",

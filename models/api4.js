@@ -1,6 +1,6 @@
 export async function getGlobalMetrics(parameter = null) {
     let url =
-        "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest";
+        "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest";
 
     const header = {
         Accept: "application/json",
