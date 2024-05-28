@@ -1,6 +1,6 @@
 export async function getMetaData(parameter = null) {
     let url =
-        "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v2/cryptocurrency/info";
+        "https://cors-anywhere.herokuapp.com/pro-api.coinmarketcap.com:443/v2/cryptocurrency/info";
 
     const header = {
         Accept: "application/json",
