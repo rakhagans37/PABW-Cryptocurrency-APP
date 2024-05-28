@@ -142,12 +142,6 @@
             <table class="w-full text-sm text-left rtl:text-right text-gray-400">
                 <thead class="text-sm font-extrabold bg-gray-700 text-white font-sora">
                     <tr>
-                        <th scope="col" class="p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
-                                <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                            </div>
-                        </th>
                         <th scope="col" class="px-6 py-3">
                             Name
                         </th>
@@ -202,8 +196,11 @@
 
 
     </div> <!-- Container End -->
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script>
+        // Function if user click search button
         function search() {
             if (document.getElementById("table-search").value == "") {
                 return;
@@ -215,6 +212,7 @@
             window.location.href = "index.php?" + param.toString();
         }
 
+        // Function to go to next page
         function nextPage() {
             const urlSearchParams = new URLSearchParams(window.location.search);
             const page = urlSearchParams.get("page");
@@ -226,6 +224,7 @@
             window.location.href = "index.php?" + newParam.toString();
         }
 
+        // Function to go to previous page
         function prevPage() {
             const urlSearchParams = new URLSearchParams(window.location.search);
             const page = urlSearchParams.get("page") ?? null;
@@ -270,130 +269,7 @@
 
     // Function to display data to the table
     function displayTable(data, limit) {
-        for (let index = 0; index < 100; index++) {
-            const checkbox = document.createElement("input");
-            checkbox.id = "checkbox-table-search-1";
-            checkbox.type = "checkbox";
-            checkbox.className = "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600";
-
-            const label = document.createElement("label");
-            label.htmlFor = "checkbox-table-search-1";
-            label.className = "sr-only";
-            label.textContent = "checkbox";
-
-            const div = document.createElement("div");
-            div.className = "flex items-center";
-            div.appendChild(checkbox);
-            div.appendChild(label);
-
-            const td = document.createElement("td");
-            td.className = "w-4 p-4";
-            td.appendChild(div);
-
-            const th = document.createElement("th");
-            th.scope = "row";
-            th.className = "px-6 py-4";
-            th.textContent = data.data[index].name;
-
-            const td1 = document.createElement("td");
-            td1.className = "px-6 py-4";
-            td1.textContent = "Rp." + parseFloat(data.data[index].quote.IDR.price).toLocaleString("id-ID");
-
-            const td2 = document.createElement("td");
-            td2.className = parseFloat(data.data[index].quote.IDR.percent_change_1h) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
-            td2.textContent = data.data[index].quote.IDR.percent_change_1h + "%";
-
-            const td3 = document.createElement("td");
-            td3.className = parseFloat(data.data[index].quote.IDR.percent_change_24h) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
-            td3.textContent = data.data[index].quote.IDR.percent_change_24h + "%";
-
-            const td4 = document.createElement("td");
-            td4.className = parseFloat(data.data[index].quote.IDR.percent_change_7d) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
-            td4.textContent = data.data[index].quote.IDR.percent_change_7d + "%";
-
-            const td5 = document.createElement("td");
-            td5.className = "px-6 py-4";
-            td5.textContent = "Rp." + parseFloat(data.data[index].quote.IDR.market_cap).toLocaleString("id-ID");
-
-            const td6 = document.createElement("td");
-            td6.className = "px-6 py-4 text-sm";
-            td6.textContent = data.data[index].quote.IDR.volume_24h + " " + data.data[index].quote.IDR.volume_change_24h + " " + data.data[index].symbol;
-
-            const td7 = document.createElement("td");
-            td7.className = "px-6 py-4";
-            if (index < limit) {
-                const divTradingView = document.createElement("div");
-                divTradingView.className = "tradingview-widget-container";
-                const divWidget = document.createElement("div");
-                divWidget.className = "tradingview-widget-container__widget";
-                divTradingView.appendChild(divWidget);
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
-                script.async = true;
-                script.textContent = `{
-                "symbol": "CRYPTOCAP:${data.data[index].symbol}",
-                "width": "250",
-                "height": "100",
-                "locale": "en",
-                "dateRange": "1M",
-                "colorTheme": "dark",
-                "isTransparent": false,
-                "autosize": false,
-                "largeChartUrl": "",
-                "chartOnly": true,
-                "noTimeScale": true
-            }`;
-                divTradingView.appendChild(script);
-                td7.appendChild(divTradingView);
-            }
-
-
-            const tr = document.createElement("tr");
-            tr.onclick = function() {
-                changePage(data.data[index].id, data.data[index].symbol);
-            };
-            tr.className = "border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
-            if (index >= limit) {
-                tr.style.display = "none";
-            }
-            tr.appendChild(td);
-            tr.appendChild(th);
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td3);
-            tr.appendChild(td4);
-            tr.appendChild(td5);
-            tr.appendChild(td6);
-            tr.appendChild(td7);
-
-            const table = document.getElementById("allDataTable");
-            table.appendChild(tr);
-        }
-    }
-
-    // Function to display data to the table
-    function searchCoin(data, limit) {
         for (let index = 0; index < limit; index++) {
-            const checkbox = document.createElement("input");
-            checkbox.id = "checkbox-table-search-1";
-            checkbox.type = "checkbox";
-            checkbox.className = "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600";
-
-            const label = document.createElement("label");
-            label.htmlFor = "checkbox-table-search-1";
-            label.className = "sr-only";
-            label.textContent = "checkbox";
-
-            const div = document.createElement("div");
-            div.className = "flex items-center";
-            div.appendChild(checkbox);
-            div.appendChild(label);
-
-            const td = document.createElement("td");
-            td.className = "w-4 p-4";
-            td.appendChild(div);
-
             const th = document.createElement("th");
             th.scope = "row";
             th.className = "px-6 py-4";
@@ -461,7 +337,6 @@
             if (index >= limit) {
                 tr.style.display = "none";
             }
-            tr.appendChild(td);
             tr.appendChild(th);
             tr.appendChild(td1);
             tr.appendChild(td2);
@@ -505,11 +380,11 @@
         const limit = document.querySelector('input[name="filter-radio"]:checked').value;
         getListLatestCoin({
             "convert": "IDR",
-        }).then((newData) => {
+        }).then((data) => {
             const tableBody = document.getElementById("allDataTable");
             tableBody.innerHTML = "";
 
-            displayTable(newData, limit);
+            displayTable(data.data, limit);
             document.getElementById("loading").style.display = "none";
         });
 
@@ -525,23 +400,23 @@
             document.getElementById("loading").style.display = "block";
             console.log(response);
 
-            searchCoin(response.data[search], response.data[search].length);
+            displayTable(response.data[search], response.data[search].length);
             document.getElementById("loading").style.display = "none";
         });
     } else {
         getListLatestCoin({
             "convert": "IDR",
             "start": startPage,
-            "limit": 100,
         }).then((response) => {
             document.getElementById("loading").style.display = "block";
             console.log(response);
 
-            displayTable(response, 10);
+            displayTable(response.data, 10);
             document.getElementById("loading").style.display = "none";
         });
     }
 
+    // Function change page to detail page
     function changePage(id, symbol) {
         const param = new URLSearchParams({
             "id": id,

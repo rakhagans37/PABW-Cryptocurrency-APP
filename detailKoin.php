@@ -174,7 +174,7 @@
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
                         {
-                            "symbol": "CRYPTOCAP:<?php echo $_GET['symbol']; ?>",
+                            "symbol": "COINBASE:<?php echo $_GET['symbol'] . "USD"; ?>",
                             "locale": "en",
                             "dateRange": "12M",
                             "colorTheme": "dark",
@@ -281,6 +281,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     const symbol = urlParams.get("symbol");
+    const coinWatchList = JSON.parse(localStorage.getItem('watchlist') || '[]');
 
     // Get coin metadata
     getMetaData({
@@ -303,8 +304,6 @@
             button.textContent = element;
             document.getElementById('tags-value').appendChild(button);
         });
-
-
     });
 
     // Get latest quote
