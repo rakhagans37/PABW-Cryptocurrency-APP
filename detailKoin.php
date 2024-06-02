@@ -19,16 +19,20 @@
                 <img src="./src/img/logo.png" class="w-16 h-16" />
                 <h1 class="text-white font-bold text-3xl">crypo</h1>
             </a>
-            <button type="button" id="watchlist-button" class=" bg-barColor">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.7299 3.51001L15.4899 7.03001C15.7299 7.52002 16.3699 7.99001 16.9099 8.08001L20.0999 8.61001C22.1399 8.95001 22.6199 10.43 21.1499 11.89L18.6699 14.37C18.2499 14.79 18.0199 15.6 18.1499 16.18L18.8599 19.25C19.4199 21.68 18.1299 22.62 15.9799 21.35L12.9899 19.58C12.4499 19.26 11.5599 19.26 11.0099 19.58L8.01991 21.35C5.87991 22.62 4.57991 21.67 5.13991 19.25L5.84991 16.18C5.97991 15.6 5.74991 14.79 5.32991 14.37L2.84991 11.89C1.38991 10.43 1.85991 8.95001 3.89991 8.61001L7.08991 8.08001C7.61991 7.99001 8.25991 7.52002 8.49991 7.03001L10.2599 3.51001C11.2199 1.60001 12.7799 1.60001 13.7299 3.51001Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <span class="sr-only">Icon description</span>
-            </button>
         </div>
 
         <!-- Date and Time -->
-        <p class="text-white text-4xl font-extrabold" id="datetime"></p>
+        <div class="flex flex-row justify-between items-center">
+            <p class="text-white text-4xl font-extrabold" id="datetime"></p>
+            <button type="button" class="h-full text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <div class="flex flex-row justify-between gap-2 items-center">
+                    <p>Add To Watchlist</p>
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21.285 0H8.715C3.255 0 0 3.255 0 8.715V21.27C0 26.745 3.255 30 8.715 30H21.27C26.73 30 29.985 26.745 29.985 21.285V8.715C30 3.255 26.745 0 21.285 0ZM21 16.125H16.125V21C16.125 21.615 15.615 22.125 15 22.125C14.385 22.125 13.875 21.615 13.875 21V16.125H9C8.385 16.125 7.875 15.615 7.875 15C7.875 14.385 8.385 13.875 9 13.875H13.875V9C13.875 8.385 14.385 7.875 15 7.875C15.615 7.875 16.125 8.385 16.125 9V13.875H21C21.615 13.875 22.125 14.385 22.125 15C22.125 15.615 21.615 16.125 21 16.125Z" fill="#FCFCFC" />
+                    </svg>
+                </div>
+            </button>
+        </div>
 
         <!-- Grid Container -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
