@@ -16,11 +16,28 @@
 <body class="bg-background w-screen font-sans">
     <!-- Container -->
     <div class="w-full pt-[85px] px-[85px] flex flex-col gap-14">
-        <!-- Header -->
-        <a class="flex flex-row gap-2 items-center" href="index.php">
-            <img src="./src/img/logo.png" class="w-16 h-16" />
-            <h1 class="text-white font-bold text-3xl">crypo</h1>
-        </a>
+        <div class="flex flex-row justify-between items-end">
+            <!-- Header -->
+            <a class="flex flex-row gap-2 items-center" href="index.php">
+                <img src="./src/img/logo.png" class="w-16 h-16" />
+                <h1 class="text-white font-bold text-3xl">crypo</h1>
+            </a>
+
+            <div class="flex flex-row">
+                <a href="watchlist.php">
+                    <button type="button" class="borderfocus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-4 items-center focus:ring-gray-600 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 me-2 mb-2">
+                        <img src="./assets/star.svg" alt="">
+                        Watchlist
+                    </button>
+                </a>
+                <a href="portofolio.php">
+                    <button type="button" class="borderfocus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-4 items-center focus:ring-gray-600 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 me-2 mb-2">
+                        <img src="./assets/wallet-money.svg" alt="">
+                        Portofolio
+                    </button>
+                </a>
+            </div>
+        </div>
 
         <!-- Date and Time -->
         <p class="text-white text-4xl font-extrabold" id="datetime"></p>

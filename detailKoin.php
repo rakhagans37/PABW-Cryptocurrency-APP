@@ -17,11 +17,26 @@
     <!-- Container -->
     <div class=" w-full pt-[85px] px-[85px] flex flex-col gap-14">
         <!-- Header -->
-        <div class="flex flex-row justify-between items-center">
+        <div class="flex flex-row justify-between items-end">
             <a class="flex flex-row gap-2 items-center" href="index.php">
                 <img src="./src/img/logo.png" class="w-16 h-16" />
                 <h1 class="text-white font-bold text-3xl">crypo</h1>
             </a>
+
+            <div class="flex flex-row">
+                <a href="watchlist.php">
+                    <button type="button" class="borderfocus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-4 items-center focus:ring-gray-600 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 me-2 mb-2">
+                        <img src="./assets/star.svg" alt="">
+                        Watchlist
+                    </button>
+                </a>
+                <a href="portofolio.php">
+                    <button type="button" class="borderfocus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-4 items-center focus:ring-gray-600 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 me-2 mb-2">
+                        <img src="./assets/wallet-money.svg" alt="">
+                        Portofolio
+                    </button>
+                </a>
+            </div>
         </div>
 
         <!-- Date and Time -->
@@ -59,7 +74,7 @@
             <div class=" bg-secondaryBg p-6 rounded-lg flex flex-col gap-4 py-8 px-6">
                 <!-- Header -->
                 <div class="flex flex-col justify-between items-start font-semibold">
-                    <h2 class="text-white text-[40px]" id="price"></h2>
+                    <h2 class="text-white text-[40px] font-bold" id="price"></h2>
                     <p class="text-2xl" id="price24h"></p>
                 </div>
                 <hr>
@@ -416,25 +431,6 @@
         });
         document.getElementById("marketCapRanking").innerHTML = "#" + rank;
     });
-
-    // Get message from local storage
-    function getMessages() {
-        const messageList = document.getElementById('message-board-list');
-        const messages = JSON.parse(localStorage.getItem('messages')) || [];
-
-        messages.forEach((message) => {
-            const messageElement = document.createElement('li');
-            messageElement.textContent = message;
-            messageElement.className = "text-gray-500 text-gray-400";
-            messageList.appendChild(messageElement);
-        });
-    }
-
-    if (localStorage.getItem('messages') == null) {
-        localStorage.setItem('messages', JSON.stringify([]));
-    } else {
-        getMessages();
-    }
 </script>
 
 </html>
