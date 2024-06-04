@@ -13,16 +13,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-background w-screen font-sans">
+<body class="bg-background w-screen h-max font-sans">
+    <!-- Decoration -->
+    <div class="absolute -z-10">
+        <img src="assets/gradient2.svg" width="600px">
+    </div>
+
+    <div class="absolute -z-10 right-0">
+        <img src="assets/gradient3.svg" width="500px">
+    </div>
+
     <!-- Container -->
     <div class="w-full pt-[85px] px-[85px] flex flex-col gap-14">
+        <!-- Header -->
         <div class="flex flex-row justify-between items-end">
-            <!-- Header -->
+            <!-- Title -->
             <a class="flex flex-row gap-2 items-center" href="index.php">
                 <img src="./src/img/logo.png" class="w-16 h-16" />
                 <h1 class="text-white font-bold text-3xl">crypo</h1>
             </a>
 
+            <!-- Nav -->
             <div class="flex flex-row">
                 <a href="watchlist.php">
                     <button type="button" class="borderfocus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-4 items-center focus:ring-gray-600 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 me-2 mb-2">
@@ -45,7 +56,7 @@
         <!-- Widget -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 gap-y-5 mb-20">
             <!-- TradingView Widget NEWS -->
-            <div class=" bg-secondaryBg p-5 lg:col-span-1 rounded-xl">
+            <div class="bg-secondaryBg/60 backdrop-blur-sm p-5 lg:col-span-1 rounded-xl">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
                     {
@@ -59,9 +70,9 @@
                     }
                 </script>
             </div>
-            <!-- TradingView Widget END -->
 
-            <div class="bg-secondaryBg lg:col-span-2 p-5 rounded-xl">
+            <!-- TradingView Widget END -->
+            <div class="bg-secondaryBg/60 backdrop-blur-sm lg:col-span-2 p-5 rounded-xl">
                 <!-- TradingView Widget CHART -->
                 <div>
                     <div class="tradingview-widget-container__widget"></div>
@@ -106,7 +117,6 @@
                         </span>
                     </button>
                 </div>
-
 
                 <!-- Search End -->
 
@@ -162,7 +172,7 @@
             </div> <!-- Table Header End -->
 
             <!-- Data Table Start -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-400 rounded-xl overflow-hidden">
                 <thead class="text-sm font-extrabold bg-gray-700 text-white font-sora">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -200,7 +210,7 @@
         <!-- Table End -->
 
         <!-- Pagination -->
-        <div class="flex flex-col items-center  mb-10">
+        <div class="flex flex-col items-center mb-10">
             <!-- Help text -->
             <span class="text-sm text-gray-400">
                 Page <span class="font-semibold text-white"><?= $_GET["page"] ?? 1 ?></span> get <span class="font-semibold  text-white">100</span> Entries
@@ -216,8 +226,6 @@
             </div>
         </div>
     </div> <!-- Container End -->
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="./services/index.js"></script>
 </body>
@@ -317,7 +325,7 @@
             tr.onclick = function() {
                 changePage(data[index].id, data[index].symbol);
             };
-            tr.className = "border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
+            tr.className = "border-b bg-secondaryBg/60 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
             if (index >= limit) {
                 tr.style.display = "none";
             }

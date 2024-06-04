@@ -14,10 +14,19 @@
 </head>
 
 <body class="bg-background w-screen font-sans dark">
+    <!-- Decoration -->
+    <div class="absolute -z-10">
+        <img src="assets/gradient2.svg" width="500px">
+    </div>
+
+    <div class="absolute -z-10 right-0">
+        <img src="assets/gradient3.svg" width="500px">
+    </div>
+
     <!-- Container -->
     <div class="w-full pt-[85px] px-[85px] flex flex-col gap-14">
         <!-- Header -->
-        <div class="flex flex-row justify-between items-end">
+        <div class="flex flex-col gap-5 md:flex-row md:justify-between md:items-end">
             <!-- Header -->
             <a class="flex flex-row gap-2 items-center" href="index.php">
                 <img src="./src/img/logo.png" class="w-16 h-16" />
@@ -61,7 +70,7 @@
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            Open positions
+                            Pilih Koin
                         </h3>
                         <button id="close-crypto-modal" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crypto-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -101,8 +110,10 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                     </div>
+
                     <!-- Modal body -->
-                    <form class="p-4 md:p-5" id="buy-form">
+                    <form class="hidden p-4 md:p-5" id="buy-form">
+                        <!-- Data -->
                         <div class="grid gap-4 mb-4 grid-cols-2">
                             <div class="col-span-2 flex flex-row items-center gap-2">
                                 <img width="32px" height="32px" src="" alt="Coin Logo" id="buy-coin-logo">
@@ -121,44 +132,69 @@
                                 <input type="text" name="subtotal" id="subtotal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="0,41241" required="" disabled>
                             </div>
                         </div>
-                        <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <button type="submit" class="inline-flex text-white items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
                             </svg>
                             Beli Koin
                         </button>
+                        <!-- Data End -->
                     </form>
+
+                    <!-- Loading -->
+                    <div role="status" class="space-y-2.5 animate-pulse max-w-lg p-4 md:p-5" id="loading">
+                        <div class="flex items-center w-full">
+                            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                        </div>
+                        <div class="flex items-center w-full max-w-[480px]">
+                            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                        </div>
+                        <div class="flex items-center w-full max-w-[400px]">
+                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                        </div>
+                        <div class="flex items-center w-full max-w-[480px]">
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                        </div>
+                        <div class="flex items-center w-full max-w-[440px]">
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-32"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                        </div>
+                        <div class="flex items-center w-full max-w-[360px]">
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                            <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                            <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                        </div>
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <!-- Loading End -->
                 </div>
             </div>
         </div>
 
         <!-- Wallet -->
-        <div class="grid grid-cols-4 gap-20 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-20 items-center">
             <!-- Total Asset -->
-            <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-5 lg:col-span-2">
                 <h1 class="text-grayText text-3xl">My Portofolio</h1>
-                <p class="text-white text-5xl font-bold">Rp. 160000</p>
-                <div class="flex flex-row gap-4 items-center ">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.9997 2.33325C7.55967 2.33325 2.33301 7.55992 2.33301 13.9999C2.33301 20.4399 7.55967 25.6666 13.9997 25.6666C20.4397 25.6666 25.6663 20.4399 25.6663 13.9999C25.6663 7.55992 20.4397 2.33325 13.9997 2.33325ZM18.118 14.0349C17.943 14.2099 17.7213 14.2916 17.4997 14.2916C17.278 14.2916 17.0563 14.2099 16.8813 14.0349L14.8747 12.0283V18.0833C14.8747 18.5616 14.478 18.9583 13.9997 18.9583C13.5213 18.9583 13.1247 18.5616 13.1247 18.0833V12.0283L11.118 14.0349C10.7797 14.3733 10.2197 14.3733 9.88134 14.0349C9.54301 13.6966 9.54301 13.1366 9.88134 12.7983L13.3813 9.29825C13.7197 8.95992 14.2797 8.95992 14.618 9.29825L18.118 12.7983C18.4563 13.1366 18.4563 13.6966 18.118 14.0349Z" fill="#14C784" />
-                    </svg>
-                    <p class="text-greenCustom text-2xl font-semibold">Rp. 10.000</p>
+                <p class="text-white text-5xl font-bold" id="ballance"></p>
+                <div class="flex flex-row gap-4 items-center">
+                    <img src="./assets/arrow-top.svg" alt="" id="profit-icon" width="28px" height="28px">
+                    <p class="text-greenCustom text-2xl font-semibold" id="ballance-profit"></p>
                 </div>
             </div>
             <!-- Total Asset End -->
 
             <!-- Data -->
-            <div class="backdrop-blur bg-secondaryBg/50 grid grid-cols-3 col-span-3 py-6 px-10 gap-8 rounded-xl shadow-sm shadow-black">
-                <div class="bg-thirdBg flex flex-col py-5 px-5 gap-2 rounded-lg shadow-sm">
-                    <h2 class="text-grayText text-3xl">All-Time Profit</h2>
-                    <p class="text-greenCustom text-2xl font-bold">+ Rp. 10.000</p>
-                    <div class="flex flex-row gap-4 items-center ">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.9997 2.33325C7.55967 2.33325 2.33301 7.55992 2.33301 13.9999C2.33301 20.4399 7.55967 25.6666 13.9997 25.6666C20.4397 25.6666 25.6663 20.4399 25.6663 13.9999C25.6663 7.55992 20.4397 2.33325 13.9997 2.33325ZM18.118 14.0349C17.943 14.2099 17.7213 14.2916 17.4997 14.2916C17.278 14.2916 17.0563 14.2099 16.8813 14.0349L14.8747 12.0283V18.0833C14.8747 18.5616 14.478 18.9583 13.9997 18.9583C13.5213 18.9583 13.1247 18.5616 13.1247 18.0833V12.0283L11.118 14.0349C10.7797 14.3733 10.2197 14.3733 9.88134 14.0349C9.54301 13.6966 9.54301 13.1366 9.88134 12.7983L13.3813 9.29825C13.7197 8.95992 14.2797 8.95992 14.618 9.29825L18.118 12.7983C18.4563 13.1366 18.4563 13.6966 18.118 14.0349Z" fill="#14C784" />
-                        </svg>
-                        <p class="text-greenCustom text-2xl font-semibold">0,3%</p>
-                    </div>
-                </div>
+            <div class="backdrop-blur bg-secondaryBg/60 grid md:grid-cols-2 lg:col-span-3 py-6 px-10 gap-8 rounded-xl shadow-sm shadow-black">
                 <div class="bg-thirdBg flex flex-col py-5 px-5 gap-2 rounded-lg shadow-sm">
                     <h2 class="text-grayText text-3xl">Best Performer</h2>
                     <p class="text-greenCustom text-2xl font-bold">+ Rp. 10.000</p>
@@ -223,6 +259,7 @@
 </body>
 
 <script type="module">
+    // Import the functions you need from the SDKs you need
     import {
         getLatestQuote
     } from './models/api3.js';
@@ -240,27 +277,23 @@
     } from './services/localstorage.js';
 
     const portofolio = JSON.parse(localStorage.getItem('portofolio')) || {
-        "coins": {
-            "1": {
-                "totalCoin": 5,
-                "avgPrice": 1000
-            },
-        }
+        coins: {}
     };
     const coins = Object.keys(portofolio.coins);
-    console.log(coins);
 
-
+    // Get Latest Quote
     getLatestQuote({
         id: coins.toString(),
         convert: "IDR"
     }).then((data) => {
-        console.log(data);
+        let ballance = 0;
+        let totalProfit = 0;
+        // Display the data
         coins.forEach(element => {
             const tableBody = document.getElementById("portofolio-table");
 
             const newRow = document.createElement("tr");
-            newRow.classList.add("bg-secondaryBg", "border-gray-700");
+            newRow.classList.add("bg-secondaryBg/60", "border-gray-700");
 
             const nameCell = document.createElement("th");
             nameCell.setAttribute("scope", "row");
@@ -352,12 +385,26 @@
 
             dropdownDiv.appendChild(dropdownList);
             dropdownContainer.appendChild(dropdownDiv);
+
+            ballance += data.data[element].quote.IDR.price * portofolio.coins[element].totalCoin;
+            totalProfit += profit;
         });
+        document.getElementById("ballance").textContent = "Rp. " + ballance.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        if (totalProfit < 0) {
+            document.getElementById("ballance-profit").textContent = "Rp. " + Math.abs(totalProfit).toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            document.getElementById("ballance-profit").classList.add("text-redCustom");
+            document.getElementById("profit-icon").setAttribute("src", "./assets/arrow-bottom.svg");
+        } else {
+            document.getElementById("ballance-profit").textContent = "Rp. " + totalProfit.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            document.getElementById("ballance-profit").classList.add("text-greenCustom");
+        }
     });
 
+    // Get List of Coins
     getListLatestCoin({
         convert: "IDR"
     }).then((data) => {
+        // Display the data
         data.data.forEach(element => {
             const choosenCoin = document.getElementById("choosen-coin");
             const li = document.createElement("li");
@@ -409,16 +456,19 @@
         });
     });
 
+    // Event Listener for Buy Asset Button
     document.getElementById("buy-asset-btn").addEventListener("click", () => {
         const modal = new Modal(document.getElementById("crypto-modal"));
         modal.show();
     });
 
+    // Event Listener for Close Modal Button
     document.getElementById("close-crypto-modal").addEventListener("click", () => {
         const modal = new Modal(document.getElementById("crypto-modal"));
         modal.hide();
     });
 
+    // Event Listener for Price Form
     document.getElementById("price").addEventListener("change", () => {
         const price = document.getElementById("price").value;
         const totalCoin = document.getElementById("totalCoin").value;
@@ -426,6 +476,7 @@
         subtotal.value = (price * totalCoin).toFixed();
     });
 
+    // Event Listener for Close Total Coin Form
     document.getElementById("totalCoin").addEventListener("change", () => {
         const price = document.getElementById("price").value;
         const totalCoin = document.getElementById("totalCoin").value;
@@ -433,6 +484,7 @@
         subtotal.value = (price * totalCoin).toFixed();
     });
 
+    // Event Listener for Buy Form
     document.getElementById("buy-form").addEventListener("submit", (e) => {
         e.preventDefault();
         const choosenCoin = document.getElementById("choosen-coin");
@@ -444,11 +496,14 @@
         buyCoin(selectedCoin, parseFloat(totalCoin), parseFloat(price));
     });
 
+    // Event Listener for Next Button
     document.getElementById("crypto-next-button").addEventListener("click", () => {
         const choosenCoin = document.getElementById("choosen-coin");
         const modal = new Modal(document.getElementById("crypto-modal"));
         const selectedCoin = choosenCoin.querySelector("input:checked").value;
         modal.hide();
+        document.getElementById("loading").classList.remove("hidden");
+        document.getElementById("buy-form").classList.add("hidden");
 
         getLatestQuote({
             id: selectedCoin,
@@ -460,13 +515,15 @@
             price.value = data.data[selectedCoin].quote.IDR.price.toFixed();
             subtotal.value = data.data[selectedCoin].quote.IDR.price.toFixed();
             buyCoinName.textContent = data.data[selectedCoin].name + " (" + data.data[selectedCoin].symbol + ")";
-        });
-
-        getMetaData({
-            id: selectedCoin
-        }).then((data) => {
-            const buyCoinLogo = document.getElementById("buy-coin-logo");
-            buyCoinLogo.src = data.data[selectedCoin].logo;
+        }).then(() => {
+            getMetaData({
+                id: selectedCoin
+            }).then((data) => {
+                const buyCoinLogo = document.getElementById("buy-coin-logo");
+                buyCoinLogo.src = data.data[selectedCoin].logo;
+                document.getElementById("loading").classList.add("hidden");
+                document.getElementById("buy-form").classList.remove("hidden");
+            });
         });
     });
 </script>

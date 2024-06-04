@@ -13,6 +13,9 @@ module.exports = {
                 grayText: "#C0B5B5",
                 redCustom: "#CE0000",
             },
+            backgroundImage: {
+                "hero-pattern": "url('src/img/background.png')",
+            },
         },
         fontFamily: {
             sans: ["Inter", "sans-serif"],

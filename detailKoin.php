@@ -14,6 +14,15 @@
 </head>
 
 <body class="bg-background w-screen font-sans">
+    <!-- Decoration -->
+    <div class="absolute -z-10">
+        <img src="assets/gradient2.svg" width="500px">
+    </div>
+
+    <div class="absolute -z-10 right-0">
+        <img src="assets/gradient3.svg" width="500px">
+    </div>
+
     <!-- Container -->
     <div class=" w-full pt-[85px] px-[85px] flex flex-col gap-14">
         <!-- Header -->
