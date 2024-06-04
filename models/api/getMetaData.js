@@ -1,5 +1,5 @@
-export async function getListLatestCoin(parameter = null) {
-    let url = "https://crypto.startuphub.id/models/api/getListLatestCoin.php";
+export async function getMetaData(parameter = null) {
+    let url = "https://crypto.startuphub.id/models/api/getMetaData.php";
     const queryParameter = new URLSearchParams(parameter);
 
     url = parameter === null ? url : `${url}?${queryParameter.toString()}`;
