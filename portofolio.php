@@ -493,7 +493,10 @@
         const price = document.getElementById("price").value;
         const totalCoin = document.getElementById("totalCoin").value;
 
-        buyCoin(selectedCoin, parseFloat(totalCoin), parseFloat(price));
+        if (buyCoin(selectedCoin, parseFloat(totalCoin), parseFloat(price))) {
+            modal.hide();
+            window.location.reload();
+        }
     });
 
     // Event Listener for Next Button
