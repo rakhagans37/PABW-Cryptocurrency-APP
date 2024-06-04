@@ -23,21 +23,27 @@ export function removeFromWatchlist(...id) {
 }
 
 export function buyCoin(id, totalCoin, buyPrice) {
-    console.log(buyPrice);
-    let portofolio = JSON.parse(localStorage.getItem("portofolio")) || {
-        coins: {},
-    };
-    const totalCoinNew = totalCoin + (portofolio.coins[id]?.totalCoin ?? 0);
-    const avgPrice =
-        ((portofolio.coins[id]?.avgPrice ?? 0) *
-            (portofolio.coins[id]?.totalCoin ?? 0) +
-            buyPrice * totalCoin) /
-        totalCoinNew;
+    try {
+        console.log(buyPrice);
+        let portofolio = JSON.parse(localStorage.getItem("portofolio")) || {
+            coins: {},
+        };
+        const totalCoinNew = totalCoin + (portofolio.coins[id]?.totalCoin ?? 0);
+        const avgPrice =
+            ((portofolio.coins[id]?.avgPrice ?? 0) *
+                (portofolio.coins[id]?.totalCoin ?? 0) +
+                buyPrice * totalCoin) /
+            totalCoinNew;
 
-    portofolio.coins[id] = {
-        totalCoin: totalCoinNew,
-        avgPrice: avgPrice,
-    };
+        portofolio.coins[id] = {
+            totalCoin: totalCoinNew,
+            avgPrice: avgPrice,
+        };
 
-    localStorage.setItem("portofolio", JSON.stringify(portofolio));
+        localStorage.setItem("portofolio", JSON.stringify(portofolio));
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
 }
