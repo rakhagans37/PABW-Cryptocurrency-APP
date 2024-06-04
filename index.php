@@ -8,16 +8,47 @@
     <link href="./src/output.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-background w-screen font-sans">
+<body class="bg-background w-screen h-max font-sans">
+    <!-- Decoration -->
+    <div class="absolute -z-10">
+        <img src="assets/gradient2.svg" width="600px">
+    </div>
+
+    <div class="absolute -z-10 right-0">
+        <img src="assets/gradient3.svg" width="500px">
+    </div>
+
     <!-- Container -->
     <div class="w-full pt-[85px] px-[85px] flex flex-col gap-14">
         <!-- Header -->
-        <a class="flex flex-row gap-2 items-center" href="index.php">
-            <img src="./src/img/logo.png" class="w-16 h-16" />
-            <h1 class="text-white font-bold text-3xl">crypo</h1>
-        </a>
+        <div class="flex flex-row justify-between items-end">
+            <!-- Title -->
+            <a class="flex flex-row gap-2 items-center" href="index.php">
+                <img src="./src/img/logo.png" class="w-16 h-16" />
+                <h1 class="text-white font-bold text-3xl">crypo</h1>
+            </a>
+
+            <!-- Nav -->
+            <div class="flex flex-row">
+                <a href="watchlist.php">
+                    <button type="button" class="borderfocus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-4 items-center focus:ring-gray-600 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 me-2 mb-2">
+                        <img src="./assets/star.svg" alt="">
+                        Watchlist
+                    </button>
+                </a>
+                <a href="portofolio.php">
+                    <button type="button" class="borderfocus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-4 items-center focus:ring-gray-600 bg-gray-800 border-gray-700 text-white hover:bg-gray-700 me-2 mb-2">
+                        <img src="./assets/wallet-money.svg" alt="">
+                        Portofolio
+                    </button>
+                </a>
+            </div>
+        </div>
 
         <!-- Date and Time -->
         <p class="text-white text-4xl font-extrabold" id="datetime"></p>
@@ -25,13 +56,13 @@
         <!-- Widget -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 gap-y-5 mb-20">
             <!-- TradingView Widget NEWS -->
-            <div class="lg:col-span-1">
+            <div class="bg-secondaryBg/60 backdrop-blur-sm p-5 lg:col-span-1 rounded-xl">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
                     {
                         "feedMode": "market",
                         "market": "crypto",
-                        "isTransparent": false,
+                        "isTransparent": true,
                         "displayMode": "regular",
                         "height": 800,
                         "colorTheme": "dark",
@@ -39,27 +70,29 @@
                     }
                 </script>
             </div>
-            <!-- TradingView Widget END -->
 
-            <!-- TradingView Widget CHART -->
-            <div class="lg:col-span-2">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                    {
-                        "symbol": "CRYPTOCAP:BTC",
-                        "interval": "D",
-                        "timezone": "Etc/UTC",
-                        "theme": "dark",
-                        "style": "1",
-                        "locale": "en",
-                        "height": 800,
-                        "allow_symbol_change": true,
-                        "calendar": false,
-                        "support_host": "https://www.tradingview.com"
-                    }
-                </script>
-            </div>
             <!-- TradingView Widget END -->
+            <div class="bg-secondaryBg/60 backdrop-blur-sm lg:col-span-2 p-5 rounded-xl">
+                <!-- TradingView Widget CHART -->
+                <div>
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                        {
+                            "symbol": "CRYPTOCAP:BTC",
+                            "interval": "D",
+                            "timezone": "Etc/UTC",
+                            "theme": "dark",
+                            "style": "1",
+                            "locale": "en",
+                            "height": 800,
+                            "allow_symbol_change": true,
+                            "calendar": false,
+                            "support_host": "https://www.tradingview.com"
+                        }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
         </div>
         <!-- Widget END -->
 
@@ -85,12 +118,11 @@
                     </button>
                 </div>
 
-
                 <!-- Search End -->
 
                 <!-- Loading -->
                 <div id="loading" role="status" style="display: none;">
-                    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg aria-hidden="true" class="w-8 h-8 animate-spin text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
                         <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
                     </svg>
@@ -140,7 +172,7 @@
             </div> <!-- Table Header End -->
 
             <!-- Data Table Start -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-400 rounded-xl overflow-hidden">
                 <thead class="text-sm font-extrabold bg-gray-700 text-white font-sora">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -178,7 +210,7 @@
         <!-- Table End -->
 
         <!-- Pagination -->
-        <div class="flex flex-col items-center  mb-10">
+        <div class="flex flex-col items-center mb-10">
             <!-- Help text -->
             <span class="text-sm text-gray-400">
                 Page <span class="font-semibold text-white"><?= $_GET["page"] ?? 1 ?></span> get <span class="font-semibold  text-white">100</span> Entries
@@ -193,50 +225,9 @@
                 </button>
             </div>
         </div>
-
-
-
     </div> <!-- Container End -->
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script>
-        // Function if user click search button
-        function search() {
-            if (document.getElementById("table-search").value == "") {
-                return;
-            }
-            const search = document.getElementById("table-search").value;
-            const param = new URLSearchParams({
-                "search": search
-            });
-            window.location.href = "index.php?" + param.toString();
-        }
-
-        // Function to go to next page
-        function nextPage() {
-            const urlSearchParams = new URLSearchParams(window.location.search);
-            const page = urlSearchParams.get("page");
-            const nextPage = parseInt(page ?? 1) + 1;;
-            const newParam = new URLSearchParams({
-                "page": nextPage
-            });
-
-            window.location.href = "index.php?" + newParam.toString();
-        }
-
-        // Function to go to previous page
-        function prevPage() {
-            const urlSearchParams = new URLSearchParams(window.location.search);
-            const page = urlSearchParams.get("page") ?? null;
-            const nextPage = page == 1 || page == null ? parseInt(1) : parseInt(page ?? 1) - 1;;
-            const newParam = new URLSearchParams({
-                "page": nextPage
-            });
-
-            window.location.href = "index.php?" + newParam.toString();
-        }
-    </script>
+    <script src="./services/index.js"></script>
 </body>
 
 <script type="module">
@@ -281,15 +272,15 @@
             td1.textContent = "Rp." + parseFloat(data[index].quote.IDR.price).toLocaleString("id-ID");
 
             const td2 = document.createElement("td");
-            td2.className = parseFloat(data[index].quote.IDR.percent_change_1h) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
+            td2.className = parseFloat(data[index].quote.IDR.percent_change_1h) > 0.0 ? "px-6 py-4 text-greenCustom" : "px-6 py-4 text-redCustom";
             td2.textContent = data[index].quote.IDR.percent_change_1h + "%";
 
             const td3 = document.createElement("td");
-            td3.className = parseFloat(data[index].quote.IDR.percent_change_24h) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
+            td3.className = parseFloat(data[index].quote.IDR.percent_change_24h) > 0.0 ? "px-6 py-4 text-greenCustom" : "px-6 py-4 text-redCustom";
             td3.textContent = data[index].quote.IDR.percent_change_24h + "%";
 
             const td4 = document.createElement("td");
-            td4.className = parseFloat(data[index].quote.IDR.percent_change_7d) > 0.0 ? "px-6 py-4 text-green-500" : "px-6 py-4 text-red-800";
+            td4.className = parseFloat(data[index].quote.IDR.percent_change_7d) > 0.0 ? "px-6 py-4 text-greenCustom" : "px-6 py-4 text-redCustom";
             td4.textContent = data[index].quote.IDR.percent_change_7d + "%";
 
             const td5 = document.createElement("td");
@@ -334,7 +325,7 @@
             tr.onclick = function() {
                 changePage(data[index].id, data[index].symbol);
             };
-            tr.className = "border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
+            tr.className = "border-b bg-secondaryBg/60 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
             if (index >= limit) {
                 tr.style.display = "none";
             }
