@@ -273,7 +273,8 @@
     } from './models/api2.js';
 
     import {
-        buyCoin
+        buyCoin,
+        deleteCoin
     } from './services/localstorage.js';
 
     const portofolio = JSON.parse(localStorage.getItem('portofolio')) || {
@@ -335,17 +336,22 @@
             const actionCell = document.createElement("td");
             actionCell.classList.add("px-6", "py-4");
 
-            const dropdownButton = document.createElement("button");
-            dropdownButton.setAttribute("id", "dropdownMenuIconHorizontalButton");
-            dropdownButton.setAttribute("data-dropdown-toggle", "dropdownDotsHorizontal");
-            dropdownButton.setAttribute("type", "button");
+            const deleteButton = document.createElement("button");
+            deleteButton.setAttribute("id", "dropdownMenuIconHorizontalButton");
+            deleteButton.setAttribute("data-dropdown-toggle", "dropdownDotsHorizontal");
+            deleteButton.setAttribute("type", "button");
 
             const dropdownImage = document.createElement("img");
-            dropdownImage.setAttribute("src", "./assets/more.svg");
-            dropdownImage.setAttribute("alt", "more-button");
-
-            dropdownButton.appendChild(dropdownImage);
-            actionCell.appendChild(dropdownButton);
+            dropdownImage.setAttribute("src", "./assets/trash.svg");
+            dropdownImage.setAttribute("alt", "trash-button");
+            deleteButton.addEventListener("click", () => {
+                const coinToDelete = element;
+                if (deleteCoin(coinToDelete)) {
+                    window.location.reload();
+                }
+            });
+            deleteButton.appendChild(dropdownImage);
+            actionCell.appendChild(deleteButton);
 
             newRow.appendChild(nameCell);
             newRow.appendChild(colorCell);

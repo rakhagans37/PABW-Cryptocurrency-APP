@@ -112,7 +112,7 @@
         <!-- Table -->
         <div class="flex flex-row sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-end justify-between">
             <!-- Data Table Start -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-400 rounded-xl overflow-hidden">
                 <thead class="text-sm font-extrabold bg-gray-700 text-white font-sora">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -292,7 +292,7 @@
             tr.onclick = function() {
                 changePage(data.id, data.symbol);
             };
-            tr.className = "border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
+            tr.className = "bg-secondaryBg border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
             tr.appendChild(th);
             tr.appendChild(td1);
             tr.appendChild(td2);
