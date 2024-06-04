@@ -1,5 +1,6 @@
 export async function getMetaData(parameter = null) {
-    let url = "https://crypto.startuphub.id/models/api/getMetaData.php";
+    let url =
+        "http://localhost/PABW-Cryptocurrency-APP/models/api/getMetaData.php";
     const queryParameter = new URLSearchParams(parameter);
 
     url = parameter === null ? url : `${url}?${queryParameter.toString()}`;

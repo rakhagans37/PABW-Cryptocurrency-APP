@@ -5,9 +5,12 @@
     <title>Crypo - Pantauan Crypto</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./src/output.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link href="./src/output.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-background w-screen font-sans">
@@ -97,22 +100,14 @@
         <!-- Judul -->
         <div class="grid-cols-2">
             <div class="flex flex-row justify-between items-center mb-5">
-                <p class="text-white text-4xl font-extrabold">My First Coin Watchlist</p>
-                <button id="add-asset-btn" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" class="block text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    <div class="flex flex-row justify-between gap-2 items-center">
-                        <p>Add Asset</p>
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21.285 0H8.715C3.255 0 0 3.255 0 8.715V21.27C0 26.745 3.255 30 8.715 30H21.27C26.73 30 29.985 26.745 29.985 21.285V8.715C30 3.255 26.745 0 21.285 0ZM21 16.125H16.125V21C16.125 21.615 15.615 22.125 15 22.125C14.385 22.125 13.875 21.615 13.875 21V16.125H9C8.385 16.125 7.875 15.615 7.875 15C7.875 14.385 8.385 13.875 9 13.875H13.875V9C13.875 8.385 14.385 7.875 15 7.875C15.615 7.875 16.125 8.385 16.125 9V13.875H21C21.615 13.875 22.125 14.385 22.125 15C22.125 15.615 21.615 16.125 21 16.125Z" fill="#FCFCFC" />
-                        </svg>
-                    </div>
-                </button>
+                <p class="text-white text-4xl font-extrabold">My Coin Watchlist</p>
             </div>
         </div>
 
         <!-- Table -->
         <div class="flex flex-row sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-end justify-between">
             <!-- Data Table Start -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-400 rounded-xl overflow-hidden">
                 <thead class="text-sm font-extrabold bg-gray-700 text-white font-sora">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -292,7 +287,7 @@
             tr.onclick = function() {
                 changePage(data.id, data.symbol);
             };
-            tr.className = "border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
+            tr.className = "bg-secondaryBg border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
             tr.appendChild(th);
             tr.appendChild(td1);
             tr.appendChild(td2);

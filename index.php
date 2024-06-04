@@ -50,8 +50,17 @@
             </div>
         </div>
 
-        <!-- Date and Time -->
-        <p class="text-white text-4xl font-extrabold" id="datetime"></p>
+        <!-- Sub Heading -->
+        <div class="flex flex-row justify-between items-center">
+            <!-- Date and Time -->
+            <p class="text-white text-4xl font-extrabold" id="datetime"></p>
+            <!-- Bitcoin -->
+            <div class="flex flex-row gap-2 items-center">
+                <img src="./src/img/bitcoin-logo.svg" class="w-20 h-20" />
+                <p class="text-yellow-600 text-2xl font-bold">BTC</p>
+                <p class="text-white text-2xl font-bold" id="bitcoin-price"></p>
+            </div>
+        </div>
 
         <!-- Widget -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 gap-y-5 mb-20">
@@ -416,6 +425,23 @@
         });
         window.location.href = "detailKoin.php?" + param.toString();
     }
+
+    setInterval(() => {
+        getLatestQuote({
+            "convert": "IDR",
+            "id": 1
+        }).then((response) => {
+            console.log("berhasil");
+            document.getElementById("bitcoin-price").textContent = "Rp. " + parseFloat(response.data[1].quote.IDR.price).toLocaleString("id-ID");
+        });
+    }, 10000);
+
+    getLatestQuote({
+        "convert": "IDR",
+        "id": 1,
+    }).then((response) => {
+        document.getElementById("bitcoin-price").textContent = "Rp. " + parseFloat(response.data[1].quote.IDR.price).toLocaleString("id-ID");
+    });
 </script>
 
 </html>

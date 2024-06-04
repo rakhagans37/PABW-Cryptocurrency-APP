@@ -1,5 +1,6 @@
 export async function getListLatestCoin(parameter = null) {
-    let url = "https://crypto.startuphub.id/models/api/getListLatestCoin.php";
+    let url =
+        "http://localhost/PABW-Cryptocurrency-APP/models/api/getListLatestCoin.php";
     const queryParameter = new URLSearchParams(parameter);
 
     url = parameter === null ? url : `${url}?${queryParameter.toString()}`;

@@ -1,5 +1,6 @@
 export async function getLatestQuote(parameter = null) {
-    let url = "https://crypto.startuphub.id/models/api/getLatestQuote.php";
+    let url =
+        "http://localhost/PABW-Cryptocurrency-APP/models/api/getLatestQuote.php";
     const queryParameter = new URLSearchParams(parameter);
 
     url = parameter === null ? url : `${url}?${queryParameter.toString()}`;
