@@ -45,108 +45,58 @@
             </div>
         </div>
 
-        <!-- Main modal -->
-        <div id="crypto-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ease-in duration-1000">
-            <div class="relative p-4 w-full max-w-md max-h-full">
-                <!-- Modal content -->
-                <div class="relative rounded-lg shadow bg-gray-700">
-                    <!-- Modal header -->
-                    <div class="flex flex-col items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-600 gap-5">
-                        <div class="w-full flex flex-row justify-between items-center">
-                            <h3 class="text-lg font-semibold text-white">
-                                Pilih koin
-                            </h3>
-                            <button type="button" class="text-gray-400 bg-transparent rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white" data-modal-toggle="crypto-modal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                </svg>
-                                <span class="sr-only">Close modal</span>
-                            </button>
-                        </div>
-                        <!-- Search Bar -->
-                        <form class="w-full">
-                            <label for="default-search" class="mb-2 text-sm font-medium sr-only text-white">Search</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                    </svg>
-                                </div>
-                                <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm border rounded-lg  bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500" placeholder="Search Mockups, Logos..." required />
-                                <button type="submit" class="text-white absolute end-2.5 bottom-2.5  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Search</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="p-4 md:p-5">
-                        <ul class="my-4 space-y-3 h-80 overflow-scroll" id="coinList">
-                        </ul>
-                        <div>
-                            <a href="#" class="inline-flex items-center text-xs font-normal hover:underline text-gray-400">
-                                <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.529 7.988a2.502 2.502 0 0 1 5 .191A2.441 2.441 0 0 1 10 10.582V12m-.01 3.008H10M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
-                                Why do I need to connect with my wallet?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal End -->
-
         <!-- Judul -->
         <div class="grid-cols-2">
             <div class="flex flex-row justify-between items-center mb-5">
                 <p class="text-white text-4xl font-extrabold">My First Coin Watchlist</p>
-                <button id="add-asset-btn" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" class="block text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    <div class="flex flex-row justify-between gap-2 items-center">
-                        <p>Add Asset</p>
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21.285 0H8.715C3.255 0 0 3.255 0 8.715V21.27C0 26.745 3.255 30 8.715 30H21.27C26.73 30 29.985 26.745 29.985 21.285V8.715C30 3.255 26.745 0 21.285 0ZM21 16.125H16.125V21C16.125 21.615 15.615 22.125 15 22.125C14.385 22.125 13.875 21.615 13.875 21V16.125H9C8.385 16.125 7.875 15.615 7.875 15C7.875 14.385 8.385 13.875 9 13.875H13.875V9C13.875 8.385 14.385 7.875 15 7.875C15.615 7.875 16.125 8.385 16.125 9V13.875H21C21.615 13.875 22.125 14.385 22.125 15C22.125 15.615 21.615 16.125 21 16.125Z" fill="#FCFCFC" />
-                        </svg>
-                    </div>
-                </button>
             </div>
         </div>
 
         <!-- Table -->
         <div class="flex flex-row sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-end justify-between">
             <!-- Data Table Start -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-400">
-                <thead class="text-sm font-extrabold bg-gray-700 text-white font-sora">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            1h%
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            24h%
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            7d%
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Market cap
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Volume
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Latest7d
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="allDataTable" class="font-sora font-normal text-sm text-white">
-
-                </tbody>
-            </table>
+            <div class="w-full overflow-x-auto">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-400 rounded-xl overflow-hidden">
+                    <thead class="text-sm font-extrabold bg-gray-700 text-white font-sora sticky top-0">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                Name
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                Price
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                1h%
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                24h%
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                7d%
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                Market cap
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                Volume
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                Latest7d
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-700">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    </thead>
+                    <tbody id="allDataTable" class="font-sora font-normal text-sm text-white">
+                        <!-- Data rows go here -->
+                    </tbody>
+                </table>
+            </div>
             <!-- Data Table End -->
         </div>
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script type="module">
@@ -156,6 +106,9 @@
         import {
             getLatestQuote
         } from "./models/api3.js";
+        import {
+            removeFromWatchlist
+        } from "./services/localstorage.js";
 
         let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
         watchlist = watchlist.toString();
@@ -189,8 +142,8 @@
 
                 // Create an image element for the coin logo
                 const coinLogo = document.createElement('img');
-                coinLogo.src = 'test.jpg';
-                coinLogo.alt = 'test';
+                coinLogo.src = coin.logo;
+                coinLogo.alt = coin.name;
 
                 // Create a span element for the coin name
                 const coinName = document.createElement('span');
@@ -225,7 +178,6 @@
 
                 // Append the list item to the coin list
                 const coinList = document.getElementById('coinList');
-                coinList.appendChild(listItem);
             });
         });
 
@@ -288,11 +240,23 @@
             divTradingView.appendChild(script);
             td7.appendChild(divTradingView);
 
+            const td8 = document.createElement("td");
+            td8.className = "px-6 py-4";
+            const deleteIcon = document.createElement("img");
+            deleteIcon.src = "assets/trash.svg";
+            deleteIcon.alt = "Delete";
+            deleteIcon.className = "w-5 h-5 cursor-pointer";
+            deleteIcon.addEventListener("click", function() {
+                if (removeFromWatchlist(data.id.toString())) {
+                    window.location.reload();
+                } else {
+                    alert("Failed to remove from watchlist");
+                }
+            });
+            td8.appendChild(deleteIcon);
+
             const tr = document.createElement("tr");
-            tr.onclick = function() {
-                changePage(data.id, data.symbol);
-            };
-            tr.className = "border-b bg-gray-800 border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
+            tr.className = "bg-secondaryBg border-gray-700 hover:bg-gray-50 hover:bg-gray-600";
             tr.appendChild(th);
             tr.appendChild(td1);
             tr.appendChild(td2);
@@ -301,6 +265,7 @@
             tr.appendChild(td5);
             tr.appendChild(td6);
             tr.appendChild(td7);
+            tr.appendChild(td8);
 
             const table = document.getElementById("allDataTable");
             table.appendChild(tr);

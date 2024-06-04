@@ -51,7 +51,7 @@
 
         <!-- Date and Time -->
         <div class="flex flex-row justify-between">
-            <p class="text-white text-4xl font-extrabold" id="datetime">Senin, 3 Juni 2024</p>
+            <p class="text-white text-4xl font-extrabold">My Portofolio</p>
             <button id="buy-asset-btn" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" class="block text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                 <div class="flex flex-row justify-between gap-2 items-center">
                     <p>Buy Asset</p>
@@ -197,22 +197,16 @@
             <div class="backdrop-blur bg-secondaryBg/60 grid md:grid-cols-2 lg:col-span-3 py-6 px-10 gap-8 rounded-xl shadow-sm shadow-black">
                 <div class="bg-thirdBg flex flex-col py-5 px-5 gap-2 rounded-lg shadow-sm">
                     <h2 class="text-grayText text-3xl">Best Performer</h2>
-                    <p class="text-greenCustom text-2xl font-bold">+ Rp. 10.000</p>
+                    <p class="text-greenCustom text-2xl font-bold" id="best-performer">+ 0</p>
                     <div class="flex flex-row gap-4 items-center ">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.9997 2.33325C7.55967 2.33325 2.33301 7.55992 2.33301 13.9999C2.33301 20.4399 7.55967 25.6666 13.9997 25.6666C20.4397 25.6666 25.6663 20.4399 25.6663 13.9999C25.6663 7.55992 20.4397 2.33325 13.9997 2.33325ZM18.118 14.0349C17.943 14.2099 17.7213 14.2916 17.4997 14.2916C17.278 14.2916 17.0563 14.2099 16.8813 14.0349L14.8747 12.0283V18.0833C14.8747 18.5616 14.478 18.9583 13.9997 18.9583C13.5213 18.9583 13.1247 18.5616 13.1247 18.0833V12.0283L11.118 14.0349C10.7797 14.3733 10.2197 14.3733 9.88134 14.0349C9.54301 13.6966 9.54301 13.1366 9.88134 12.7983L13.3813 9.29825C13.7197 8.95992 14.2797 8.95992 14.618 9.29825L18.118 12.7983C18.4563 13.1366 18.4563 13.6966 18.118 14.0349Z" fill="#14C784" />
-                        </svg>
-                        <p class="text-greenCustom text-2xl font-semibold">0,3%</p>
+                        <p class="text-greenCustom text-2xl font-semibold" id="best-performer-profit">0%</p>
                     </div>
                 </div>
                 <div class="bg-thirdBg flex flex-col py-5 px-5 gap-2 rounded-lg shadow-sm">
                     <h2 class="text-grayText text-3xl">Worst Performer</h2>
-                    <p class="text-greenCustom text-2xl font-bold">+ Rp. 10.000</p>
+                    <p class="text-greenCustom text-2xl font-bold" id="worst-performer">- 0</p>
                     <div class="flex flex-row gap-4 items-center ">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.9997 2.33325C7.55967 2.33325 2.33301 7.55992 2.33301 13.9999C2.33301 20.4399 7.55967 25.6666 13.9997 25.6666C20.4397 25.6666 25.6663 20.4399 25.6663 13.9999C25.6663 7.55992 20.4397 2.33325 13.9997 2.33325ZM18.118 14.0349C17.943 14.2099 17.7213 14.2916 17.4997 14.2916C17.278 14.2916 17.0563 14.2099 16.8813 14.0349L14.8747 12.0283V18.0833C14.8747 18.5616 14.478 18.9583 13.9997 18.9583C13.5213 18.9583 13.1247 18.5616 13.1247 18.0833V12.0283L11.118 14.0349C10.7797 14.3733 10.2197 14.3733 9.88134 14.0349C9.54301 13.6966 9.54301 13.1366 9.88134 12.7983L13.3813 9.29825C13.7197 8.95992 14.2797 8.95992 14.618 9.29825L18.118 12.7983C18.4563 13.1366 18.4563 13.6966 18.118 14.0349Z" fill="#14C784" />
-                        </svg>
-                        <p class="text-greenCustom text-2xl font-semibold">0,3%</p>
+                        <p class="text-greenCustom text-2xl font-semibold" id="worst-performer-profit">0%</p>
                     </div>
                 </div>
             </div> <!-- Data End -->
@@ -273,7 +267,8 @@
     } from './models/api2.js';
 
     import {
-        buyCoin
+        buyCoin,
+        deleteCoin
     } from './services/localstorage.js';
 
     const portofolio = JSON.parse(localStorage.getItem('portofolio')) || {
@@ -288,6 +283,7 @@
     }).then((data) => {
         let ballance = 0;
         let totalProfit = 0;
+        let profits = {};
         // Display the data
         coins.forEach(element => {
             const tableBody = document.getElementById("portofolio-table");
@@ -335,17 +331,22 @@
             const actionCell = document.createElement("td");
             actionCell.classList.add("px-6", "py-4");
 
-            const dropdownButton = document.createElement("button");
-            dropdownButton.setAttribute("id", "dropdownMenuIconHorizontalButton");
-            dropdownButton.setAttribute("data-dropdown-toggle", "dropdownDotsHorizontal");
-            dropdownButton.setAttribute("type", "button");
+            const deleteButton = document.createElement("button");
+            deleteButton.setAttribute("id", "dropdownMenuIconHorizontalButton");
+            deleteButton.setAttribute("data-dropdown-toggle", "dropdownDotsHorizontal");
+            deleteButton.setAttribute("type", "button");
 
             const dropdownImage = document.createElement("img");
-            dropdownImage.setAttribute("src", "./assets/more.svg");
-            dropdownImage.setAttribute("alt", "more-button");
-
-            dropdownButton.appendChild(dropdownImage);
-            actionCell.appendChild(dropdownButton);
+            dropdownImage.setAttribute("src", "./assets/trash.svg");
+            dropdownImage.setAttribute("alt", "trash-button");
+            deleteButton.addEventListener("click", () => {
+                const coinToDelete = element;
+                if (deleteCoin(coinToDelete)) {
+                    window.location.reload();
+                }
+            });
+            deleteButton.appendChild(dropdownImage);
+            actionCell.appendChild(deleteButton);
 
             newRow.appendChild(nameCell);
             newRow.appendChild(colorCell);
@@ -388,7 +389,14 @@
 
             ballance += data.data[element].quote.IDR.price * portofolio.coins[element].totalCoin;
             totalProfit += profit;
+            profits[element] = {
+                profit: profit,
+                price: data.data[element].quote.IDR.price,
+                percentage: (profit / (data.data[element].quote.IDR.price * portofolio.coins[element].totalCoin)) * 100,
+                symbol: data.data[element].symbol
+            };
         });
+
         document.getElementById("ballance").textContent = "Rp. " + ballance.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         if (totalProfit < 0) {
             document.getElementById("ballance-profit").textContent = "Rp. " + Math.abs(totalProfit).toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -397,6 +405,38 @@
         } else {
             document.getElementById("ballance-profit").textContent = "Rp. " + totalProfit.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             document.getElementById("ballance-profit").classList.add("text-greenCustom");
+        }
+
+        const bestPerformer = Object.keys(profits).reduce((a, b) => profits[a].profit > profits[b].profit ? a : b);
+        const worstPerformer = Object.keys(profits).reduce((a, b) => profits[a].profit < profits[b].profit ? a : b);
+
+        document.getElementById("worst-performer").textContent = "Rp. " + profits[worstPerformer].profit.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        document.getElementById("best-performer-profit").textContent = profits[bestPerformer].percentage.toFixed(2) + "%";
+        document.getElementById("worst-performer-profit").textContent = profits[worstPerformer].percentage.toFixed(2) + "%";
+
+        if (profits[bestPerformer].profit > 0) {
+            document.getElementById("best-performer").textContent = "+ Rp. " + profits[bestPerformer].profit.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            document.getElementById("best-performer").classList.add("text-greenCustom");
+        } else {
+            document.getElementById("best-performer").textContent = "- Rp. " + Math.abs(profits[bestPerformer].profit).toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            document.getElementById("best-performer").classList.add("text-redCustom");
+        }
+        if (profits[worstPerformer].profit > 0) {
+            document.getElementById("worst-performer").textContent = "+ Rp. " + profits[worstPerformer].profit.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            document.getElementById("worst-performer").classList.add("text-greenCustom");
+        } else {
+            document.getElementById("worst-performer").textContent = "- Rp. " + Math.abs(profits[worstPerformer].profit).toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            document.getElementById("worst-performer").classList.add("text-redCustom");
+        }
+        if (profits[bestPerformer].profit > 0) {
+            document.getElementById("best-performer-profit").classList.add("text-greenCustom");
+        } else {
+            document.getElementById("best-performer-profit").classList.add("text-redCustom");
+        }
+        if (profits[worstPerformer].profit > 0) {
+            document.getElementById("worst-performer-profit").classList.add("text-greenCustom");
+        } else {
+            document.getElementById("worst-performer-profit").classList.add("text-redCustom");
         }
     });
 
