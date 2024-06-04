@@ -242,7 +242,7 @@
 <script type="module">
     import {
         getListLatestCoin
-    } from "./models/api.js";
+    } from "./models/api/getListLatestCoin.js"
 
     import {
         getLatestQuote
