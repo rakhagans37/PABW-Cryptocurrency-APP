@@ -35,3 +35,16 @@ export function buyCoin(id, totalCoin, buyPrice) {
         return false;
     }
 }
+
+export function deleteCoin(coinToDelete) {
+    try {
+        const portofolio = JSON.parse(localStorage.getItem("portofolio")) || {
+            coins: {},
+        };
+        delete portofolio.coins[coinToDelete];
+        localStorage.setItem("portofolio", JSON.stringify(portofolio));
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
