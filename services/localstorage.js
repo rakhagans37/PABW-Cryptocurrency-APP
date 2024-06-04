@@ -5,9 +5,14 @@ export function addToWatchlist(...id) {
 }
 
 export function removeFromWatchlist(...id) {
-    let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
-    watchlist = watchlist.filter((coin) => !id.includes(coin));
-    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    try {
+        let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+        watchlist = watchlist.filter((coin) => !id.includes(coin));
+        localStorage.setItem("watchlist", JSON.stringify(watchlist));
+        return true;
+    } catch (error) {
+        return false;
+    }
 }
 
 export function buyCoin(id, totalCoin, buyPrice) {
