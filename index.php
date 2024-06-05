@@ -303,6 +303,10 @@
             const td7 = document.createElement("td");
             td7.className = "px-6 py-4";
             if (index < limit) {
+                let pair = "USDT"
+                if (data[index].symbol == "USDT") {
+                    pair = "IDRT"
+                }
                 const divTradingView = document.createElement("div");
                 divTradingView.className = "tradingview-widget-container";
                 const divWidget = document.createElement("div");
@@ -313,7 +317,7 @@
                 script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
                 script.async = true;
                 script.textContent = `{
-                "symbol": "CRYPTOCAP:${data[index].symbol}",
+                "symbol": "BINANCE:${data[index].symbol + pair}",
                 "width": "250",
                 "height": "100",
                 "locale": "en",
@@ -381,6 +385,7 @@
         const limit = document.querySelector('input[name="filter-radio"]:checked').value;
         getListLatestCoin({
             "convert": "IDR",
+            "start": startPage,
         }).then((data) => {
             const tableBody = document.getElementById("allDataTable");
             tableBody.innerHTML = "";
@@ -431,7 +436,6 @@
             "convert": "IDR",
             "id": 1
         }).then((response) => {
-            console.log("berhasil");
             document.getElementById("bitcoin-price").textContent = "Rp. " + parseFloat(response.data[1].quote.IDR.price).toLocaleString("id-ID");
         });
     }, 10000);

@@ -48,7 +48,7 @@
         <!-- Judul -->
         <div class="grid-cols-2">
             <div class="flex flex-row justify-between items-center mb-5">
-                <p class="text-white text-4xl font-extrabold">My First Coin Watchlist</p>
+                <p class="text-white text-4xl font-extrabold">My Coin Watchlist</p>
             </div>
         </div>
 

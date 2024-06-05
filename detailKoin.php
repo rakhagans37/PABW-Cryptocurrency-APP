@@ -233,7 +233,7 @@
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
                         {
-                            "symbol": "COINBASE:<?php echo $_GET['symbol'] . "USD"; ?>",
+                            "symbol": "CRYPTO:<?php echo $_GET['symbol'] . "USD"; ?>",
                             "locale": "en",
                             "dateRange": "12M",
                             "colorTheme": "dark",
